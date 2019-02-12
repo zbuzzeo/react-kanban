@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const redis = require('connect-redis')(session);
 
+const routes = {
+  board : require('./routes/board')
+}
+
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.development || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
@@ -65,6 +69,8 @@ app.get('/secret', isAuthenticated, (req, res) => {
   console.log('req.username', req.user.username);
   res.send('you found the secret!');
 });
+
+app.use(routes.board);
 
 app.listen(PORT, () => {
   console.log(`listening in on port: ${PORT}`);

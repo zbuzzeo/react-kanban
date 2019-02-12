@@ -6,7 +6,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database:  'react_kanban',
-      host:      'postgres-primary-db',
+      host:      'localhost',
       user:      'zbuzzeo',
       password:  'password',
     }

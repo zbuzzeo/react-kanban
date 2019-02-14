@@ -2,14 +2,14 @@ import React from 'react';
 import './Card.scss';
 
 const Card = (props) => {
-  const { cardId, title, body, priority, assigned_to } = props;
+  const { cardId, title, body, priority, status, created_by, assigned_to } = props;
 
   return (
-    <div className="card">
+    <div className={ status }>
       <div className="cardIdContainer">
         <div className="cardId">{ cardId }</div>
       </div>
-      
+
       <div className="cardContent">
         <div className="cardTitle">{ title }</div>
 
@@ -18,9 +18,17 @@ const Card = (props) => {
           
           <div className="cardConditions">
             <div className="cardPriority">Priority: { priority }</div>
-            <div className="cardAssignedTo">Assigned to: { assigned_to }</div>
+            <div className="cardAssignedBy">Assigned by: { created_by }</div>
           </div>
         </div>
+
+        {/* <div className="cardExtras">
+          <div className="cardInteraction">
+            <button className="cardEdit"></button>
+            <button className="cardDelete"></button>
+          </div>
+          <div className="cardAssignedTo">{ assigned_to }</div>
+        </div> */}
       </div>
     </div>
   );

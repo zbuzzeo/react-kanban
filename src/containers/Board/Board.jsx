@@ -25,7 +25,7 @@ class Board extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Board">
         <Column cards={ this.filterStatus('IN QUEUE') } />
         <Column cards={ this.filterStatus('IN PROGRESS') } />
         <Column cards={ this.filterStatus('DONE') } />

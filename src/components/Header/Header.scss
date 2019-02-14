@@ -1,0 +1,17 @@
+$background-color-1:  #4e535c;
+$background-color-2:  coral;
+$font-color-1:        #ffffff;
+
+.header {
+  display: flex;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  background-color: $background-color-1;
+  height: 3.2em;
+  .headerTitle {
+    font-size: 1.2em;
+    color: white;
+    position: relative;
+    left: 1em;
+  }
+}

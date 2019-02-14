@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Header from '../../components/Header';
 import Board from '../Board';
+import cardReducer from '../../reducers';
 import './App.css';
 
 class App extends Component {
@@ -8,15 +10,16 @@ class App extends Component {
     super(props);
 
     this.state = {
-
+      headerTitle : `KANBAN`
     }
   }
 
   render() {
     return (
       <div className="App">
-        <h1>smokey</h1>
-        <Board />
+        <Header title={ this.state.headerTitle } />
+        {/* the Board component should have a cards prop referencing the array of cards that we get from the reducer. */}
+        <Board cards={ cardReducer } />
       </div>
     );
   }

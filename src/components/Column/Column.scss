@@ -1,22 +1,28 @@
 $background-color-1:  #4e535c;
 $background-color-2:  coral;
 $background-color-3:  white;
+
 $font-color-1:        #ffffff;
-$font-color-2:        black;
+$font-color-2:        #4e535c;
 $font-color-3:        coral;
+$font-color-4:        black;
+
+$letter-spacing: 0.12em;
 
 .column {
   display: flex;
   flex-direction: column;
+  align-items: center;
   .columnContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: $background-color-2;
-    height: 3em;
+    background-color: $background-color-3;
+    height: 5em;
     .columnTitle {
-      color: white;
-      letter-spacing: 0.12em;
+      font-size: 1.1em;
+      color: $font-color-2;
+      letter-spacing: $letter-spacing;
     }
   }
 }

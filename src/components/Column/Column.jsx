@@ -9,7 +9,7 @@ const Column = (props) => {
   const cardList = props.cards.map(card => {
     const { id, title, body, priority, assigned_to } = card;
 
-    return (<Card key={ id } title={ title } body={ body } priority={ priority } assigned_to={ assigned_to } />);
+    return (<Card key={ id } cardId={ id } title={ title } body={ body } priority={ priority } assigned_to={ assigned_to } />);
   });
   
   return (

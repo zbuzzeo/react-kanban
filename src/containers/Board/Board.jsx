@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Column from '../../components/Column';
 import { connect } from 'react-redux';
+import './Board.scss';
 
 class Board extends Component {
   constructor (props) { 
@@ -26,9 +27,9 @@ class Board extends Component {
   render() {
     return (
       <div className="Board">
-        <Column cards={ this.filterStatus('IN QUEUE') } />
-        <Column cards={ this.filterStatus('IN PROGRESS') } />
-        <Column cards={ this.filterStatus('DONE') } />
+        <Column cards={ this.filterStatus('IN QUEUE') } title="IN QUEUE" />
+        <Column cards={ this.filterStatus('IN PROGRESS') } title="IN PROGRESS" />
+        <Column cards={ this.filterStatus('DONE') } title="DONE" />
       </div>
     );
   }

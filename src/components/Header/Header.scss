@@ -10,12 +10,22 @@ $font-color-3:        coral;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
   background-color: $background-color-1;
-  height: 3.2em;
-  .headerTitle {
-    font-size: 1.2em;
-    color: white;
-    letter-spacing: 0.12em;
-    position: relative;
-    left: 1em;
+  height: 3.5em;
+  .titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    .headerTitle {
+      font-size: 1.2em;
+      color: white;
+      letter-spacing: 0.12em;
+      position: relative;
+      left: 1em;
+    }
+  }
+  .NewTaskContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
   }
 }

@@ -1,0 +1,41 @@
+$background-color-1:        #ffffff;
+$background-color-2:        #4e535c;
+$background-color-orange:   #fcf0dc;
+$background-color-green:    #E4FDC9;
+$background-color-gray:     #F7F8FB;
+
+$font-color-1:        #ffffff;
+$font-color-2:        #4e535c;
+$font-color-orange:   #F5B349;
+$font-color-green:    #A7DB71;
+$font-color-gray:     #B7BDC8;
+
+$border-color-1:            #ffffff;
+$border-color-2:            #4e535c;
+$border-color-orange:       #F5AB3A;
+$border-color-green:        #91D34B;
+$border-color-gray:         #C8CDD9;
+
+$letter-spacing: 0.12em;
+
+.NewTaskButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color-2;
+  font-size: 1.1em;
+  color: $font-color-1;
+  border: 0.05em solid $font-color-1;
+  letter-spacing: $letter-spacing;
+  transition-duration: 200ms;
+  text-align: center;
+  height: 2em;
+  width: 9em;
+  position: relative;
+  right: 1.5em;
+}
+
+.NewTaskButton:hover {
+  color: $font-color-green;
+  border: 0.05em solid $border-color-green;
+}

@@ -8,6 +8,7 @@ const cards = [
     body : 'Lightweight and performant library at the forefront of front-end development',
     priority : 'HIGH',
     status : 'IN PROGRESS',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   }, 
@@ -17,6 +18,7 @@ const cards = [
     body : 'Redux implements the concept of Flux data flow to tame the beast that is asynchronicity',
     priority : 'BLOCKER',
     status : 'IN PROGRESS',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   },
@@ -26,6 +28,7 @@ const cards = [
     body : 'CMS that allows users to post, update, edit, and delete photos on the website',
     priority : 'MEDIUM',
     status : 'IN PROGRESS',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   }, 
@@ -35,6 +38,7 @@ const cards = [
     body : 'Display information from a database on the back-end on the browser',
     priority : 'LOW',
     status : 'DONE',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   }, 
@@ -44,6 +48,7 @@ const cards = [
     body : 'Practice templating with the Handlebars library',
     priority : 'LOW',
     status : 'DONE',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   }, 
@@ -53,6 +58,7 @@ const cards = [
     body : 'Get comfortable with setting up a server that can handle multiple routes',
     priority : 'LOW',
     status : 'DONE',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   },
@@ -62,6 +68,7 @@ const cards = [
     body : 'Work with a staple framework that bridges the back and front end of development',
     priority : 'LOW',
     status : 'IN QUEUE',
+    created_by : 'Ed',
     assigned_to : 'Zeke',
     updated_at : new Date().toLocaleTimeString()
   }

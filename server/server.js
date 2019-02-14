@@ -4,11 +4,10 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const redis = require('connect-redis')(session);
 
-const routes = {
-  board : require('./routes/board')
-}
+const routesBoard = require('./routes/board');
 
 const PORT = process.env.PORT || 8080;
+const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT || 6379;
 const ENV = process.env.development || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
 
@@ -17,7 +16,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(session({
-  store : new redis({ url : 'redis://redis-server:6379', logErrors : true }),
+  store : new redis({ url : `redis://redis-server:${REDIS_HOST_PORT}`, logErrors : true }),
   secret : SESSION_SECRET,
   resave : false,
   saveUninitialized : false,
@@ -70,7 +69,7 @@ app.get('/secret', isAuthenticated, (req, res) => {
   res.send('you found the secret!');
 });
 
-app.use(routes.board);
+app.use(routesBoard);
 
 app.listen(PORT, () => {
   console.log(`listening in on port: ${PORT}`);

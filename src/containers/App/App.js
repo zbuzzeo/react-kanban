@@ -19,7 +19,7 @@ class App extends Component {
       <div className="App">
         <Header title={ this.state.headerTitle } />
         {/* the Board component should have a cards prop referencing the array of cards that we get from the reducer. */}
-        <Board cards={ cardReducer } />
+        <Board />
       </div>
     );
   }

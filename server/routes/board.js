@@ -7,7 +7,6 @@ const router = express.Router();
 const books = []; // use bookshelf to grab card data from database
 
 router.get('/', (req, res) => {
-  console.log('fucking hitty');
   return res.json(books);
 });
 

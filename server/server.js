@@ -8,19 +8,24 @@ const routesBoard = require('./routes/board');
 
 // To do: find alternative for defaults
 const PORT = process.env.PORT || 8080;
+const REDIS_HOST = process.env.REDIS_HOST;
 const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT || 6379;
 const ENV = process.env.development || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
 
 const app = express();
 
+if (!REDIS_HOST) {
+  throw new Error('REDIS_HOST not set in ENV');
+}
+
 if (!REDIS_HOST_PORT) {
-  throw new Error('REDIS_HOST_PORT not set');
+  throw new Error('REDIS_HOST_PORT not set in ENV');
 }
 
 app.use(bodyParser.json());
 app.use(session({
-  store : new redis({ url : `redis://redis-server:${REDIS_HOST_PORT}`, logErrors : true }),
+  store : new redis({ url : `${REDIS_HOST}:${REDIS_HOST_PORT}`, logErrors : true }),
   secret : SESSION_SECRET,
   resave : false,
   saveUninitialized : false,

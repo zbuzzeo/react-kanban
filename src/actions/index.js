@@ -10,9 +10,24 @@ export const LOAD_CARDS = 'LOAD_CARDS';
  */
 
 export function addCard(newCard) {
-  return {
-    type : ADD_CARD,
-    payload : newCard
+  return (dispatch) => {
+    return fetch('/', {
+      method : 'POST',
+      body : JSON.stringify(newCard),
+      headers : {
+        'Content-Type' : 'application/json'
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(body => {
+        console.log(body);
+        return dispatch({
+            type : ADD_CARD,
+            payload : newCard
+          });
+      });
   }
 }
 

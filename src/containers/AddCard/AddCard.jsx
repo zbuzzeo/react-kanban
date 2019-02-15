@@ -23,6 +23,7 @@ class AddCard extends Component {
     this.handleStatusOnChange = this.handleStatusOnChange.bind(this);
     this.handleCreatedByOnChange = this.handleCreatedByOnChange.bind(this);
     this.handleAssignedToOnChange = this.handleAssignedToOnChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   handleTitleOnChange(e) {

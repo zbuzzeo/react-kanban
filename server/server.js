@@ -7,13 +7,26 @@ const redis = require('connect-redis')(session);
 const routesBoard = require('./routes/board');
 
 // To do: find alternative for defaults
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const REDIS_HOST = process.env.REDIS_HOST;
-const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT || 6379;
-const ENV = process.env.development || 'development';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
+const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT
+const PROJECT_ENVIRONMENT = process.env.PROJECT_ENVIRONMENT;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const app = express();
+
+// validate environment variables
+if (!PORT) {
+  throw new Error('PORT not set in ENV');
+}
+
+if (!PROJECT_ENVIRONMENT) {
+  throw new Error('PROJECT_ENVIRONMENT not set in ENV');
+}
+
+if (!SESSION_SECRET) {
+  throw new Error('SESSION_SECRET not set in ENV');
+}
 
 if (!REDIS_HOST) {
   throw new Error('REDIS_HOST not set in ENV');

@@ -6,9 +6,12 @@ import * as serviceWorker from './serviceWorker';
 
 import cardReducer from './reducers';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 
-const store = createStore(cardReducer);
+const store = createStore(cardReducer,
+  applyMiddleware(ReduxThunk)  
+);
 
 ReactDOM.render(
   <Provider store={store}>

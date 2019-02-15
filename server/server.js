@@ -7,13 +7,26 @@ const redis = require('connect-redis')(session);
 const routesBoard = require('./routes/board');
 
 // To do: find alternative for defaults
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const REDIS_HOST = process.env.REDIS_HOST;
-const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT || 6379;
-const ENV = process.env.development || 'development';
-const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
+const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT
+const PROJECT_ENV = process.env.PROJECT_ENV;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const app = express();
+
+// validate environment variables
+if (!PORT) {
+  throw new Error('PORT not set in ENV');
+}
+
+if (!PROJECT_ENV) {
+  throw new Error('PROJECT_ENV not set in ENV');
+}
+
+if (!SESSION_SECRET) {
+  throw new Error('SESSION_SECRET not set in ENV');
+}
 
 if (!REDIS_HOST) {
   throw new Error('REDIS_HOST not set in ENV');
@@ -29,7 +42,7 @@ app.use(session({
   secret : SESSION_SECRET,
   resave : false,
   saveUninitialized : false,
-  cookie : { secure : ENV === 'production' }
+  cookie : { secure : PROJECT_ENV === 'production' }
 }));
 
 app.use(express.static('public'));
@@ -48,7 +61,7 @@ passport.serializeUser((user, done) => {
 
 // deserializeUser happens after every request
 passport.deserializeUser((user, done) => {
-  new user({ id : user.id }).fetch()
+  new User({ id : user.id }).fetch()
     .then(user => {
       user = user.toJSON();
       return done(null, {

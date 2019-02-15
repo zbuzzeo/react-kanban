@@ -1,22 +1,4 @@
-$background-color-1:        #ffffff;
-$background-color-2:        #4e535c;
-$background-color-orange:   #fcf0dc;
-$background-color-green:    #E4FDC9;
-$background-color-gray:     #F7F8FB;
-
-$font-color-1:        #ffffff;
-$font-color-2:        #4e535c;
-$font-color-orange:   #F5B349;
-$font-color-green:    #A7DB71;
-$font-color-gray:     #B7BDC8;
-
-$border-color-1:            #ffffff;
-$border-color-2:            #4e535c;
-$border-color-orange:       #F5AB3A;
-$border-color-green:        #91D34B;
-$border-color-gray:         #C8CDD9;
-
-$letter-spacing: 0.12em;
+@import '../../../sass/config';
 
 .Board {
   display: flex;

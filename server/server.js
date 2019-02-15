@@ -14,6 +14,10 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
 
 const app = express();
 
+if (!REDIS_HOST_PORT) {
+  throw new Error('REDIS_HOST_PORT not set');
+}
+
 app.use(bodyParser.json());
 app.use(session({
   store : new redis({ url : `redis://redis-server:${REDIS_HOST_PORT}`, logErrors : true }),

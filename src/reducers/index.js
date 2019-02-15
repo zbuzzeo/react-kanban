@@ -1,4 +1,5 @@
 import { ADD_CARD } from '../actions';
+import { LOAD_CARDS } from '../actions';
 
 let cardId = 0;
 const cards = [
@@ -25,7 +26,7 @@ const cards = [
   {
     id : 3,
     title : 'Express Gallery',
-    body : 'CMS that allows users to post, update, edit, and delete photos on the website',
+    body : 'CMS that allows users to post, update and delete photos on the website',
     priority : 'MEDIUM',
     status : 'IN PROGRESS',
     created_by : 'Ed',
@@ -79,6 +80,8 @@ const cardReducer = (state = cards, action) => {
     case ADD_CARD:
       action.payload['id'] = ++cardId;
       return [...state, action.payload];
+    case LOAD_CARDS:
+      return [].concat(action.payload);
     default:
       return state;
   }

@@ -20,6 +20,17 @@ const Card = (props) => {
             <div className="cardPriority">Priority: { priority }</div>
             <div className="cardAssignedBy">Assigned by: { created_by }</div>
           </div>
+
+          <div className="cardExtras">
+            <div className="cardOptionsContainer">
+            {/* Change edit to a component with a modal form later on */}
+              <button className="cardEdit">EDIT</button>
+              <button className="cardDelete">DELETE</button>
+            </div>
+            <div className="cardAssignedToContainer">
+              <div className="cardAssignedTo">{ assigned_to }</div>
+            </div>
+          </div>
         </div>
 
         {/* <div className="cardExtras">

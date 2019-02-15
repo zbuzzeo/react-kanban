@@ -8,13 +8,13 @@ import cardReducer from './reducers';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-let store = createStore(cardReducer);
+const store = createStore(cardReducer);
 
 ReactDOM.render(
-    <Provider store={ store }>
-      <App />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

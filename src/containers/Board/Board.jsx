@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Column from '../../components/Column';
 import { connect } from 'react-redux';
+import loadCards from '../../reducers';
 import './Board.scss';
 
 class Board extends Component {
@@ -41,7 +42,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    onLoad: () => {
+      dispatch(loadCards());
+    }
+  };
 }
 
 Board = connect(

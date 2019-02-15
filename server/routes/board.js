@@ -4,9 +4,11 @@ const express = require('express');
 
 const router = express.Router();
 
+const books = []; // use bookshelf to grab card data from database
+
 router.get('/', (req, res) => {
   console.log('fucking hitty');
-  // show kanban board
+  return res.json(books);
 });
 
 router.post('/', (req, res) => {

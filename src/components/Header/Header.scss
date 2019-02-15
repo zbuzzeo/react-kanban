@@ -1,15 +1,10 @@
-$background-color-1:  #4e535c;
-$background-color-2:  coral;
-$background-color-3:  white;
-$font-color-1:        #ffffff;
-$font-color-2:        black;
-$font-color-3:        coral;
+@import '../../../sass/config';
 
 .header {
   display: flex;
   align-items: center;
-  font-family: 'Montserrat', sans-serif;
-  background-color: $background-color-1;
+  font-family: $primary-font, $font-type;
+  background-color: $background-color-2;
   height: 3.5em;
   .titleContainer {
     display: flex;
@@ -17,7 +12,7 @@ $font-color-3:        coral;
     width: 50%;
     .headerTitle {
       font-size: 1.2em;
-      color: white;
+      color: $font-color-1;
       letter-spacing: 0.12em;
       position: relative;
       left: 1em;

@@ -15,6 +15,9 @@ Build a Digital Kanban board using:
 ## Layout/Style Guide
 ![screen shot 2016-11-04 at 1 21 12 pm](https://cloud.githubusercontent.com/assets/4650739/20025357/afd23626-a291-11e6-9d34-667a64ead92d.png)
 
+### LucidChart ERD
+> [via lucidchart.com](https://www.lucidchart.com/invitations/accept/1a1fbd51-f8c9-40f7-b9f6-f0f5c619f1bd)
+
 
 ## Specifications
 

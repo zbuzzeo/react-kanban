@@ -88,7 +88,7 @@ class AddCard extends Component {
       // The value of "option" for selectPriority has to be an id.
       <div className="formContainer">
         <form className="taskSubmission">
-          <input onChange={ this.handleTitleOnChange }type="text" value={ title } placeholder="Title" />
+          <input onChange={ this.handleTitleOnChange } type="text" value={ title } placeholder="Title" />
           <input onChange={ this.handleBodyOnChange } type="text" value={ body } placeholder="A brief description" />
 
           <select onChange={ this.handlePriorityOnChange } className="selectPriority">

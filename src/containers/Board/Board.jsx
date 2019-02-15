@@ -21,10 +21,6 @@ class Board extends Component {
     });
   }
 
-  log() {
-    return console.log;
-  }
-
   render() {
     return (
       <div className="Board">

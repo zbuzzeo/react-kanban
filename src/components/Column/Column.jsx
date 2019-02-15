@@ -4,7 +4,6 @@ import './Column.scss';
 
 const Column = (props) => {
   // for every card Object in the array, we want to inject its properties into its corresponding component.
-  console.log(props);
   const { title } = props;
   const cardList = props.cards.map(card => {
     const { id, title, body, priority, status, created_by, assigned_to } = card;

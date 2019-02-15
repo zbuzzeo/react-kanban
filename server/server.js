@@ -35,7 +35,6 @@ app.use(passport.session());
 
 // serializeUser happens after login
 passport.serializeUser((user, done) => {
-  console.log('serializing');
   return done(null, {
     id : user.id,
     username : user.username
@@ -44,7 +43,6 @@ passport.serializeUser((user, done) => {
 
 // deserializeUser happens after every request
 passport.deserializeUser((user, done) => {
-  console.log('deserializing');
   new user({ id : user.id }).fetch()
     .then(user => {
       user = user.toJSON();
@@ -67,9 +65,6 @@ const isAuthenticated = (req, res, next) => {
 
 app.get('/secret', isAuthenticated, (req, res) => {
   // the req.user is all of the deserializedUser information
-  console.log('req.user: ', req.user);
-  console.log('req.user.id', req.user.id);
-  console.log('req.username', req.user.username);
   res.send('you found the secret!');
 });
 

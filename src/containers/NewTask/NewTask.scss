@@ -1,0 +1,60 @@
+@import '../../../sass/config';
+
+.NewTaskButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color-2;
+  font-size: 1.1em;
+  color: $font-color-1;
+  border: 0.05em solid $font-color-1;
+  letter-spacing: $letter-spacing;
+  transition-duration: 200ms;
+  text-align: center;
+  height: 2em;
+  width: 9em;
+  position: relative;
+  right: 1.5em;
+}
+
+.NewTaskButton:hover {
+  color: $font-color-green;
+  border: 0.05em solid $border-color-green;
+}
+
+.modal {
+  position: fixed;
+  top: 10em;
+  border-radius: $modal-border-radius;
+  // padding: 1em;
+  background-color: $background-color-1;
+  height: 40em; width: 40em;
+  overflow: hidden;
+  .headerContainer {
+    border-radius: $modal-border-radius $modal-border-radius 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $modal-background-color-2;
+    height: 3.5em;
+    .headerText {
+      border-radius: $modal-border-radius;
+      font-size: 1.2em;
+      color: $font-color-1;
+      letter-spacing: $letter-spacing;
+      position: relative;
+      left: 1em;
+    }
+  }
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $overlay-color-1;
+}

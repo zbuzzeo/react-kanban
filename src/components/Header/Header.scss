@@ -1,0 +1,26 @@
+@import '../../../sass/config';
+
+.header {
+  display: flex;
+  align-items: center;
+  font-family: $primary-font, $font-type;
+  background-color: $background-color-2;
+  height: 3.5em;
+  .titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+    .headerTitle {
+      font-size: 1.2em;
+      color: $font-color-1;
+      letter-spacing: 0.12em;
+      position: relative;
+      left: 1em;
+    }
+  }
+  .NewTaskContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+  }
+}

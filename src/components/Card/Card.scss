@@ -1,0 +1,227 @@
+@import '../../../sass/config';
+
+// individual coloring is done after this section
+.IN.QUEUE, .IN.PROGRESS, .DONE {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  transition-duration: 125ms;
+  transition-delay: 50ms;
+  border: 0.05em solid;
+  height: 10em;
+  width: 95%;
+  overflow: hidden;
+  // padding: 4%;
+  margin-bottom: 1em;
+  .cardIdContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .cardId {
+      font-size: 0.7em;
+      font-weight: 600;
+      color: $font-color-gray;
+      letter-spacing: $letter-spacing;
+      position: relative;
+      top: 0.75em; left: 0.75em;
+    }
+  }
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .cardTitle {
+      font-size: 1.2em;
+      font-weight: 500;
+      text-align: left;
+      // font-weight: bold;
+    }
+    .cardDetails {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      .cardBody {
+        color: $font-color-2;
+        height: 2em;
+        text-align: left;
+      }
+      .cardConditions {
+        position: relative;
+        top: 1em;
+        .cardPriority, .cardAssignedBy {
+          color: $font-color-2;
+          text-align: left;
+        }
+      }
+      .cardExtras {
+        display: flex;
+        margin-top: 1.4em;
+        position: relative;
+        .cardOptionsContainer {
+          display: flex;
+          justify-content: flex-start;
+          width: 50%;
+          position: relative;
+          bottom: 0.15em;
+          .cardEdit, .cardDelete {
+            font-size: 0.95em;
+            font-weight: 500;
+            letter-spacing: $letter-spacing - 0.02em;
+            height: 2em;
+            border: none;
+          }
+        }
+        .cardAssignedToContainer {
+          display: flex;
+          justify-content: flex-end;
+          width: 50%;
+          position: relative;
+          bottom: 0.15em;
+          .cardAssignedTo {
+            color: $font-color-2;
+          }
+        }
+      }
+    }
+  }
+}
+
+.IN.QUEUE:hover, .IN.PROGRESS:hover, .DONE:hover {
+  height: 11em;
+  width: 95%;
+}
+
+.IN.QUEUE {
+  background-color: $background-color-orange;
+  border-color: $border-color-orange;
+  .cardIdContainer {
+    .cardId {
+      color: $font-color-orange;
+    }
+  }
+  .cardContent {
+    .cardTitle {
+      color: $font-color-3;
+    }
+    .cardDetails {
+      .cardBody {
+        color: $font-color-3;
+      }
+      .cardConditions {
+        .cardPriority, .cardAssignedBy {
+          color: $font-color-3;
+        }
+      }
+      .cardExtras {
+        .cardOptionsContainer {
+          .cardEdit, .cardDelete {
+            background-color: $background-color-orange;
+            color: $border-color-orange;
+            border-bottom: 0 solid $border-color-orange;
+          }
+          .cardEdit:hover, .cardDelete:hover {
+            border-bottom: 0.05em solid $border-color-orange;
+          }
+          .cardEdit {
+            margin-right: 1em;
+          }
+        }
+        .cardAssignedToContainer {
+          .cardAssignedTo {
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.IN.PROGRESS {
+  background-color: $background-color-green;
+  border-color: $border-color-green;
+  .cardIdContainer {
+    .cardId {
+      color: $font-color-green;
+    }
+  }
+  .cardContent {
+    .cardTitle {
+      color: $font-color-3;
+    }
+    .cardDetails {
+      .cardBody {
+        color: $font-color-3;
+      }
+      .cardConditions {
+        .cardPriority, .cardAssignedBy {
+          color: $font-color-3;
+        }
+      }
+      .cardExtras {
+        .cardOptionsContainer {
+          .cardEdit, .cardDelete {
+            background-color: $background-color-green;
+            color: $border-color-green;
+            border-bottom: 0 solid $border-color-green;
+          }
+          .cardEdit:hover, .cardDelete:hover {
+            border-bottom: 0.05em solid $border-color-green;
+          }
+          .cardEdit {
+            margin-right: 1em;
+          }
+        }
+        .cardAssignedToContainer {
+          .cardAssignedTo {
+
+          }
+        }
+      }
+    }
+  }
+}
+
+.DONE {
+  background-color: $background-color-gray;
+  border-color: $border-color-gray;
+  .cardIdContainer {
+    .cardId {
+      color: $font-color-gray;
+    }
+  }
+  .cardContent {
+    .cardTitle {
+      color: $font-color-3;
+    }
+    .cardDetails {
+      .cardBody {
+        color: $font-color-3;
+      }
+      .cardConditions {
+        .cardPriority, .cardAssignedBy {
+          color: $font-color-3;
+        }
+      }
+      .cardExtras {
+        .cardOptionsContainer {
+          .cardEdit, .cardDelete {
+            background-color: $background-color-gray;
+            color: $border-color-gray;
+            border-bottom: 0 solid $border-color-gray;
+          }
+          .cardEdit:hover, .cardDelete:hover {
+            border-bottom: 0.05em solid $border-color-gray;
+          }
+          .cardEdit {
+            margin-right: 1em;
+          }
+        }
+        .cardAssignedToContainer {
+          .cardAssignedTo {
+
+          }
+        }
+      }
+    }
+  }
+}

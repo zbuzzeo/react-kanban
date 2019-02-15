@@ -7,19 +7,19 @@ class Card extends bookshelf.Model {
   get hasTimestamps() { return true; }
 
   assigned_to() {
-    return this.hasOne(User);
+    return this.hasOne('User');
   }
 
   created_by() {
-    return this.hasOne(User);
+    return this.hasOne('User');
   }
 
   priority() {
-    return this.hasOne(Priority);
+    return this.hasOne('Priority');
   }
 
   status() {
-    return this.hasOne(Status);
+    return this.hasOne('Status');
   }
 }
 

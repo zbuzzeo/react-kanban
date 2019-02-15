@@ -4,20 +4,28 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const redis = require('connect-redis')(session);
 
-const routes = {
-  board : require('./routes/board')
-}
+const routesBoard = require('./routes/board');
 
+// To do: find alternative for defaults
 const PORT = process.env.PORT || 8080;
+const REDIS_HOST = process.env.REDIS_HOST;
+const REDIS_HOST_PORT = process.env.REDIS_HOST_PORT || 6379;
 const ENV = process.env.development || 'development';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'keyboard cat';
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+if (!REDIS_HOST) {
+  throw new Error('REDIS_HOST not set in ENV');
+}
+
+if (!REDIS_HOST_PORT) {
+  throw new Error('REDIS_HOST_PORT not set in ENV');
+}
+
 app.use(bodyParser.json());
 app.use(session({
-  store : new redis({ url : 'redis://redis-server:6379', logErrors : true }),
+  store : new redis({ url : `${REDIS_HOST}:${REDIS_HOST_PORT}`, logErrors : true }),
   secret : SESSION_SECRET,
   resave : false,
   saveUninitialized : false,
@@ -32,7 +40,6 @@ app.use(passport.session());
 
 // serializeUser happens after login
 passport.serializeUser((user, done) => {
-  console.log('serializing');
   return done(null, {
     id : user.id,
     username : user.username
@@ -41,7 +48,6 @@ passport.serializeUser((user, done) => {
 
 // deserializeUser happens after every request
 passport.deserializeUser((user, done) => {
-  console.log('deserializing');
   new user({ id : user.id }).fetch()
     .then(user => {
       user = user.toJSON();
@@ -64,13 +70,10 @@ const isAuthenticated = (req, res, next) => {
 
 app.get('/secret', isAuthenticated, (req, res) => {
   // the req.user is all of the deserializedUser information
-  console.log('req.user: ', req.user);
-  console.log('req.user.id', req.user.id);
-  console.log('req.username', req.user.username);
   res.send('you found the secret!');
 });
 
-app.use(routes.board);
+app.use(routesBoard);
 
 app.listen(PORT, () => {
   console.log(`listening in on port: ${PORT}`);

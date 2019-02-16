@@ -4,8 +4,6 @@ import './Card.scss';
 const Card = (props) => {
   const { cardId, title, body, priority, status, created_by, assigned_to } = props;
 
-  console.log(`STATUS IS: ${ status }`);
-
   return (
     <div className={ status }>
       <div className="cardIdContainer">
@@ -34,14 +32,6 @@ const Card = (props) => {
             </div>
           </div>
         </div>
-
-        {/* <div className="cardExtras">
-          <div className="cardInteraction">
-            <button className="cardEdit"></button>
-            <button className="cardDelete"></button>
-          </div>
-          <div className="cardAssignedTo">{ assigned_to }</div>
-        </div> */}
       </div>
     </div>
   );

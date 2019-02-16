@@ -77,7 +77,6 @@ let cardId = 0;
 const cardReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_CARD:
-      console.log('hit');
       action.payload['id'] = ++cardId;
       return [...state, action.payload];
     case LOAD_CARDS:

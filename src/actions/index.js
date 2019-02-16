@@ -22,7 +22,6 @@ export function addCard(newCard) {
         return response.json();
       })
       .then(body => {
-        console.log(body);
         return dispatch({
             type : ADD_CARD,
             payload : newCard

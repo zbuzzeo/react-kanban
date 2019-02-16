@@ -70,7 +70,6 @@ passport.deserializeUser((user, done) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       return done(err);
     })
 });

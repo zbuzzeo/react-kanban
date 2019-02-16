@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import Board from '../Board';
-import cardReducer from '../../reducers';
 import './App.css';
-import { loadCards } from '../../actions';
 
 class App extends Component {
   constructor (props) {

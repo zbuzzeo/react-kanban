@@ -6,20 +6,14 @@ const Card = require('../../database/models/Card');
 const router = express.Router();
 
 router.get('/cards', (req, res) => {
-  console.log('HIT: GET');
-
   return Card.fetchAll()
-  .then(fetched => {
-    console.log(fetched);
-    return res.json(fetched);
-  });
+    .then(fetched => {
+      return res.json(fetched);
+    });
 });
 
 router.post('/', (req, res) => {
-  console.log('HIT: POST');
   let { title, body, priority, status, created_by, assigned_to } = req.body;
-
-  console.log(req.body);
 
   switch (priority) {
     case 'Low':
@@ -53,20 +47,6 @@ router.post('/', (req, res) => {
       res.send('Invalid status.');
       throw new Error('Invalid status. Make sure the switch case matches the priority options on your form.');
   }
-
-  console.log(`priority is... ${ priority }`);
-  console.log(`status is... ${ status }`);
-
-  /**
-   {
-     "title": "Title",
-     "body": "A brief description",
-     "priority": "Low",
-     "status": "IN QUEUE",
-     "created_by": "2",
-     "assigned_to": "1"
-   }
-   */
 
   Card.forge({
     'title' : title,
@@ -103,12 +83,10 @@ router.post('/', (req, res) => {
 });
 
 router.put('/', (req, res) => {
-  console.log('HIT: PUT');
   // update board item
 });
 
 router.delete('/', (req, res) => {
-  console.log('HIT: DELETE');
   // delete board item
 });
 

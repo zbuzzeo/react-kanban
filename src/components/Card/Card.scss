@@ -2,9 +2,8 @@
 
 // individual coloring is done after this section
 .IN.QUEUE, .IN.PROGRESS, .DONE {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
+  display: flex;
+  flex-direction: column;
   transition-duration: 125ms;
   transition-delay: 50ms;
   border: 0.05em solid;

@@ -15,26 +15,9 @@ class Board extends Component {
 
   filterStatus(acceptedStatus) {
     const { cards } = this.props;
-    console.log(cards); 
 
     if (cards) {
       return cards.filter(card => {
-        console.log(`Current card is`);
-        console.log(card);
-        console.log(`with status: ${ card.status_id }`);
-
-        switch (card.status_id) {
-          case 1:
-            card.status_id = 'IN QUEUE';
-            break;
-          case 2:
-            card.status_id = 'IN PROGRESS';
-          case 3:
-            card.status_id = 'DONE';
-          default:
-            console.log(`invalid status id is: ${ card.status_id }`);
-            break;
-        }
 
         return card.status_id === acceptedStatus;
       });
@@ -43,15 +26,14 @@ class Board extends Component {
 
   componentDidMount() {
     this.props.onLoad();
-    console.log(this.props.cards);
   }
 
   render() {
     return (
       <div className="Board">
-        <Column cards={ this.filterStatus('IN QUEUE') } title="IN QUEUE" />
-        <Column cards={ this.filterStatus('IN PROGRESS') } title="IN PROGRESS" />
-        <Column cards={ this.filterStatus('DONE') } title="DONE" />
+        <Column cards={ this.filterStatus(1) } title="IN QUEUE" />
+        <Column cards={ this.filterStatus(2) } title="IN PROGRESS" />
+        <Column cards={ this.filterStatus(3) } title="DONE" />
       </div>
     );
   }

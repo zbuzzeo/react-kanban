@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Column from '../../components/Column';
 import { connect } from 'react-redux';
-import loadCards from '../../reducers';
+import { loadCards } from '../../actions';
 import './Board.scss';
 
 class Board extends Component {
@@ -9,16 +9,41 @@ class Board extends Component {
     super(props);
 
     this.state = {
-
+      
     }
   }
 
   filterStatus(acceptedStatus) {
     const { cards } = this.props;
+    console.log(cards); 
 
-    return cards.filter(card => {
-      return card.status === acceptedStatus;
-    });
+    if (cards) {
+      return cards.filter(card => {
+        console.log(`Current card is`);
+        console.log(card);
+        console.log(`with status: ${ card.status_id }`);
+
+        switch (card.status_id) {
+          case 1:
+            card.status_id = 'IN QUEUE';
+            break;
+          case 2:
+            card.status_id = 'IN PROGRESS';
+          case 3:
+            card.status_id = 'DONE';
+          default:
+            console.log(`invalid status id is: ${ card.status_id }`);
+            break;
+        }
+
+        return card.status_id === acceptedStatus;
+      });
+    }
+  }
+
+  componentDidMount() {
+    this.props.onLoad();
+    console.log(this.props.cards);
   }
 
   render() {
@@ -40,7 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoad: () => {
-      dispatch(loadCards());
+      return dispatch(loadCards());
     }
   };
 }

@@ -1,24 +1,61 @@
 'use strict';
 
 const express = require('express');
-const convertPriority = require('../middleware/convertPriority');
 const Card = require('../../database/models/Card');
 
 const router = express.Router();
 
-const cards = []; // use bookshelf to grab card data from database
-
-router.get('/', (req, res) => {
+router.get('/cards', (req, res) => {
   console.log('HIT: GET');
-  return res.json(cards);
+
+  return Card.fetchAll()
+  .then(fetched => {
+    console.log(fetched);
+    return res.json(fetched);
+  });
 });
 
-router.post('/', convertPriority, (req, res) => {
+router.post('/', (req, res) => {
   console.log('HIT: POST');
-  const { title, body, priority, status, created_by, assigned_to } = req.body;
+  let { title, body, priority, status, created_by, assigned_to } = req.body;
 
   console.log(req.body);
-  console.log(`priority is: ${ priority }`);
+
+  switch (priority) {
+    case 'Low':
+      priority = 1;
+      break;
+    case 'Medium':
+      priority = 2;
+      break;
+    case 'High':
+      priority = 3;
+      break;
+    case 'Blocker':
+      priority = 4;
+      break;
+    default:
+      res.send('Invalid priority.');
+      throw new Error('Invalid priority. Make sure the switch case matches the priority options on your form.');
+  }
+
+  switch (status) {
+    case 'In Queue':
+      status = 1;
+      break;
+    case 'In Progress':
+      status = 2;
+      break;
+    case 'Done':
+      status = 3;
+      break;
+    default:
+      res.send('Invalid status.');
+      throw new Error('Invalid status. Make sure the switch case matches the priority options on your form.');
+  }
+
+  console.log(`priority is... ${ priority }`);
+  console.log(`status is... ${ status }`);
 
   /**
    {
@@ -27,18 +64,17 @@ router.post('/', convertPriority, (req, res) => {
      "priority": "Low",
      "status": "IN QUEUE",
      "created_by": "2",
-     "assigned_to": "1",
+     "assigned_to": "1"
    }
    */
 
   Card.forge({
     'title' : title,
     'body' : body,
-    'priority' : priority,
-    'status' : status,
+    'priority_id' : priority,
+    'status_id' : status,
     'created_by' : created_by,
-    'assigned_to' : assigned_to,
-    'updated_at' : new Date().toLocaleTimeString()
+    'assigned_to' : assigned_to
   })
     .save(null, { method : 'insert' })
     .then(() => {

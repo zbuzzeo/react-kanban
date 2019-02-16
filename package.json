@@ -8,6 +8,7 @@
     "body-parser": "^1.18.3",
     "bookshelf": "^0.14.2",
     "connect-redis": "^3.4.0",
+    "dot-env": "0.0.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "gulp": "^4.0.0",

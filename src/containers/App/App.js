@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Board from '../Board';
 import cardReducer from '../../reducers';
 import './App.css';
+import { loadCards } from '../../actions';
 
 class App extends Component {
   constructor (props) {
@@ -24,5 +25,20 @@ class App extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  }
+}
+
+connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 
 export default App;

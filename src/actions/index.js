@@ -34,5 +34,15 @@ export function addCard(newCard) {
 export function loadCards() {
   return (dispatch) => {
     // fetch, .then( convert to JSON object ) .then( take that response and serve the JSON object as the payload )
+    return fetch('/cards')
+      .then(response => {
+        return response.json();
+      })
+      .then(cards => {
+        return dispatch({
+          type : LOAD_CARDS,
+          payload : cards
+        })
+      });
   }
 }

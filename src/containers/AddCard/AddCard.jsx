@@ -83,16 +83,15 @@ class AddCard extends Component {
   }
 
   render() {
-    const { title, body, priority, status, created_by, assigned_to } = this.state;
+    const { title, body, /* priority, status, */ created_by, assigned_to } = this.state;
     return (
-      // All of the input fields and select elements rely on the fact that state will change. Nothing will happen in this form until all elements in the form have an .onChange handler.
-      // The value of "option" for selectPriority has to be an id.
       <div className="formContainer">
         <form className="taskSubmission">
           <input onChange={ this.handleTitleOnChange } type="text" value={ title } placeholder="Title" />
           <input onChange={ this.handleBodyOnChange } type="text" value={ body } placeholder="A brief description" />
 
           <select onChange={ this.handlePriorityOnChange } className="selectPriority">
+            <option value="Default">Choose a Priority</option>
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
@@ -100,6 +99,7 @@ class AddCard extends Component {
           </select>
 
           <select onChange={ this.handleStatusOnChange } className="selectStatus">
+            <option value="Default">Choose a Status</option>
             <option value="In Queue">In Queue</option>
             <option value="In Progress">In Progress</option>
             <option value="Done">Done</option>

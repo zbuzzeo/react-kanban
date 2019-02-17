@@ -2,12 +2,28 @@
  * Actions
  */
 
-export const ADD_CARD = 'ADD_CARD';
 export const LOAD_CARDS = 'LOAD_CARDS';
+export const ADD_CARD = 'ADD_CARD';
 
 /**
  * Action Creators
  */
+
+export function loadCards() {
+  return (dispatch) => {
+    // fetch, .then( convert to JSON object ) .then( take that response and serve the JSON object as the payload )
+    return fetch('/cards')
+      .then(response => {
+        return response.json();
+      })
+      .then(cards => {
+        return dispatch({
+          type : LOAD_CARDS,
+          payload : cards
+        })
+      });
+  }
+}
 
 export function addCard(newCard) {
   return (dispatch) => {
@@ -30,18 +46,14 @@ export function addCard(newCard) {
   }
 }
 
-export function loadCards() {
+export function deleteCard(card) {
   return (dispatch) => {
-    // fetch, .then( convert to JSON object ) .then( take that response and serve the JSON object as the payload )
-    return fetch('/cards')
-      .then(response => {
-        return response.json();
-      })
-      .then(cards => {
-        return dispatch({
-          type : LOAD_CARDS,
-          payload : cards
-        })
-      });
+    return fetch('/', {
+      method : 'DELETE',
+      body : JSON.stringify(card),
+      headers : {
+        'Content-Type' : 'application/json'
+      }
+    });
   }
 }

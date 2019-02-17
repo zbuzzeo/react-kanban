@@ -17,7 +17,7 @@ class Card extends Component {
   handleDeleteCard(e) {
     const card_id = parseInt(e.target.id);
 
-    return this.props.onDelete({ card_id });
+    return this.props.onDelete(card_id);
   }
 
   render() {

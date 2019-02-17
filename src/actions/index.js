@@ -49,12 +49,8 @@ export function addCard(newCard) {
 
 export function deleteCard(card_id) {
   return (dispatch) => {
-    return fetch('/cards', {
-      method : 'DELETE',
-      body : JSON.stringify(card_id),
-      headers : {
-        'Content-Type' : 'application/json'
-      }
+    return fetch(`/cards/${ card_id }`, {
+      method : 'DELETE'
     })
       .then(response => {
         return response.json();

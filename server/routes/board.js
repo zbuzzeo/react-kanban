@@ -82,12 +82,12 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put('/', (req, res) => {
+router.put('/cards/:id', (req, res) => {
   // update board item
 });
 
-router.delete('/cards', (req, res) => {
-  const { card_id } = req.body;
+router.delete('/cards/:id', (req, res) => {
+  const card_id = req.params.id;
 
   return new Card({ 'id' : card_id })
     .destroy()

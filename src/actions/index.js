@@ -4,6 +4,7 @@
 
 export const LOAD_CARDS = 'LOAD_CARDS';
 export const ADD_CARD = 'ADD_CARD';
+export const DELETE_CARD = 'DELETE_CARD';
 
 /**
  * Action Creators
@@ -40,20 +41,25 @@ export function addCard(newCard) {
       .then(body => {
         return dispatch({
             type : ADD_CARD,
-            payload : newCard
+            payload : body
           });
       });
   }
 }
 
-export function deleteCard(card) {
+export function deleteCard(card_id) {
   return (dispatch) => {
-    return fetch('/', {
-      method : 'DELETE',
-      body : JSON.stringify(card),
-      headers : {
-        'Content-Type' : 'application/json'
-      }
-    });
+    return fetch(`/cards/${ card_id }`, {
+      method : 'DELETE'
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(cards => {
+        return dispatch({
+          type: DELETE_CARD,
+          payload: cards
+        })
+      });
   }
 }

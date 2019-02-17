@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { deleteCard } from '../../actions';
 import './Card.scss';
 
 class Card extends Component {
@@ -8,6 +10,14 @@ class Card extends Component {
     this.state = {
 
     }
+
+    this.handleDeleteCard = this.handleDeleteCard.bind(this);
+  }
+
+  handleDeleteCard(e) {
+    const card_id = parseInt(e.target.id);
+
+    return this.props.onDelete(card_id);
   }
 
   render() {
@@ -38,7 +48,7 @@ class Card extends Component {
             <div className="cardOptionsContainer">
               {/* Change edit to a component with a modal form later on */}
                 <button className="cardEdit">EDIT</button>
-                <button className="cardDelete">DELETE</button>
+                <button id={ this.props.cardId } className="cardDelete" onClick={ this.handleDeleteCard }>DELETE</button>
               </div>
               <div className="cardAssignedToContainer">
                 <div className="cardAssignedTo">{ assigned_to }</div>
@@ -49,5 +59,24 @@ class Card extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {};
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onDelete: (id) => {
+      const actionObject = deleteCard(id);
+
+      dispatch(actionObject);
+    }
+  };
+}
+
+Card = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Card);
 
 export default Card;

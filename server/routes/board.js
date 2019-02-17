@@ -86,8 +86,17 @@ router.put('/', (req, res) => {
   // update board item
 });
 
-router.delete('/', (req, res) => {
-  // delete board item
+router.delete('/cards', (req, res) => {
+  const { card_id } = req.body;
+
+  return new Card({ 'id' : card_id })
+    .destroy()
+    .then(() => {
+      return Card.fetchAll()
+        .then(fetched => {
+          return res.json(fetched);
+        });
+    })
 });
 
 module.exports = router;
